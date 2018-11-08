@@ -24,10 +24,9 @@ class ListBooks extends Component {
                                                         <div className="book-shelf-changer">
                                                             <select>
                                                                 <option value="move" disabled>Move to...</option>
-                                                                <option value="currentlyReading">Currently Reading</option>
-                                                                <option value="wantToRead">Want to Read</option>
-                                                                <option value="read">Read</option>
-                                                                <option value="none">None</option>
+                                                                {this.props.shelves.map((shelf) => (
+                                                                    <option value={shelf.id}>{shelf.label}</option>
+                                                                ))}
                                                             </select>
                                                         </div>
                                                     </div>
