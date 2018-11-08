@@ -12,7 +12,7 @@ class BooksApp extends Component {
       { id: 'currentlyReading', label: 'Currently Reading', isVisible: true },
       { id: 'wantToRead', label: 'Want to Read', isVisible: true },
       { id: 'read', label: 'Read', isVisible: true },
-      { id: 'none', label: 'None', isVisible: false }
+      { id: '', label: 'None', isVisible: false }
     ],
     searchResults: []
   }

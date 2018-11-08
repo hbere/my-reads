@@ -23,7 +23,7 @@ class ListBooks extends Component {
                                                         <div className="book-shelf-changer">
                                                             <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book, event)}>
                                                                 <option value="move" disabled>Move to...</option>
-                                                                {this.props.shelves.filter(shelf => shelf.isVisible === true).map((shelf) => (
+                                                                {this.props.shelves.map((shelf) => (
                                                                     <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
                                                                 ))}
                                                             </select>
