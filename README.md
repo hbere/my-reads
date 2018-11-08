@@ -9,12 +9,9 @@ This is a web application that tracks books by status(currently reading, want to
 3. Run `npm install`
 4. Run `npm start`
 5. In your web browser, open [local host port 3000](http://localhost:3000/)
+6. You may now use the application
 
-# -------------------------------------------
-# -------------------------------------------
-# Udacity's original documentation below
-# -------------------------------------------
-# -------------------------------------------
+# *** Udacity's original documentation below***
 
 # MyReads Project
 
