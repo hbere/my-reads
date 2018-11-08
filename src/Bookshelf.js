@@ -159,7 +159,9 @@ class Bookshelf extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Link className="open-search" to='/search'>Add a book</Link>
+                <div className="open-search">
+                    <Link className="open-search" to='/search'>Add a book</Link>
+                </div>
             </div>
         )
     }
