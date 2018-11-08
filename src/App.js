@@ -5,7 +5,7 @@ import SearchBooks from './SearchBooks.js'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     /**
      * TODO consider whether need to track state (mutable info) here at all

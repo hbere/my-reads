@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 
-class ListBooks extends React.Component {
+class ListBooks extends Component {
+
     render() {
 
         BooksAPI.getAll()
             .then(function (response) {
                 return response;
-            }).then( function(myBooks) {
+            }).then(function (myBooks) {
                 console.log(myBooks);
             });
 
