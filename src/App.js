@@ -15,23 +15,28 @@ class BooksApp extends Component {
       // ,
       // { id: 'none', label: 'None' },
     ],
-    lastSearch: ''
+    searchResults: []
   }
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books })
+      this.setState({ books: books })
       // console.log(this.state.books)
     })
   }
 
   searchBooks = (query) => {
     // console.log(query);
-    BooksAPI.search(query)
-      .then(function (result) {
-        return result;
-      }).then(function (resultText) {
-        console.log(resultText);
+    // Search via API
+    if (query) {
+      BooksAPI.search(query).then((searchResults) => {
+        this.setState({ searchResults: searchResults });
       })
+    } else {
+      this.setState({ searchResults: [] });
+    }
+    // .then(function () {
+    //   this.render();
+    // })
   }
 
   updateShelves = (book, event) => {
@@ -55,7 +60,8 @@ class BooksApp extends Component {
         <Route exact path='/search' render={() => (
           <SearchBooks
             books={this.state.books}
-            onType={(query) => {
+            searchResults={this.state.searchResults}
+            onSearch={(query) => {
               this.searchBooks(query)
             }}
           />

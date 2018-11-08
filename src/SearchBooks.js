@@ -20,12 +20,34 @@ class SearchBooks extends Component {
                             id="bookSearchBox"
                             type="text"
                             placeholder="Search by title or author"
-                            onChange={() => this.props.onType(document.getElementById('bookSearchBox').value)}
+                            onChange={() => this.props.onSearch(document.getElementById('bookSearchBox').value)}
                         />
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <ol className="books-grid"></ol>
+                    <ol className="books-grid">
+                        {this.props.searchResults.map((book) => (
+                            <li id={book.id} key={book.id}>
+                                <div className="book">
+                                    <div className="book-top">
+                                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                        {/* <div className="book-shelf-changer">
+                                            <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book, event)}>
+                                                <option value="move" disabled>Move to...</option>
+                                                {this.props.shelves.map((shelf) => (
+                                                    <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
+                                                ))}
+                                            </select>
+                                        </div> */}
+                                    </div>
+                                    <div className="book-title">{book.title}</div>
+                                    {/* {book.authors.map((author) => (
+                                        <div className="book-authors" key={book.id + ',' + author}>{author}</div>
+                                    ))} */}
+                                </div>
+                            </li>
+                        ))}
+                    </ol>
                 </div>
             </div>
         )
