@@ -9,11 +9,10 @@ class BooksApp extends Component {
   state = {
     books: [],
     shelves: [ // TODO find way to handle dynamically
-      { id: 'currentlyReading', label: 'Currently Reading' },
-      { id: 'wantToRead', label: 'Want to Read' },
-      { id: 'read', label: 'Read' }
-      // ,
-      // { id: 'none', label: 'None' },
+      { id: 'currentlyReading', label: 'Currently Reading', isVisible: true },
+      { id: 'wantToRead', label: 'Want to Read', isVisible: true },
+      { id: 'read', label: 'Read', isVisible: true },
+      { id: 'none', label: 'None', isVisible: false }
     ],
     searchResults: []
   }
@@ -27,16 +26,14 @@ class BooksApp extends Component {
   searchBooks = (query) => {
     // console.log(query);
     // Search via API
-    if (query) {
+    if (typeof query !== 'undefined' && query.length > 0) {
       BooksAPI.search(query).then((searchResults) => {
+        console.log(searchResults);
         this.setState({ searchResults: searchResults });
       })
     } else {
       this.setState({ searchResults: [] });
     }
-    // .then(function () {
-    //   this.render();
-    // })
   }
 
   updateShelves = (book, event) => {
@@ -48,9 +45,7 @@ class BooksApp extends Component {
         // TODO for efficiency make this update locally because do not have to pull all data again here
         return BooksAPI.getAll();
       }).then((books) => {
-        // Re-render page
-        this.setState({ books })
-        this.render();
+        this.setState({ books: books })
       })
   }
 

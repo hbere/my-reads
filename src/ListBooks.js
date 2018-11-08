@@ -10,7 +10,7 @@ class ListBooks extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        {this.props.shelves.map((shelf) => (
+                        {this.props.shelves.filter(shelf => shelf.isVisible === true).map((shelf) => (
                             <div className="bookshelf" key={shelf.id}>
                                 <h2 className="bookshelf-title">{shelf.label}</h2>
                                 <div className="bookshelf-books">
@@ -23,7 +23,7 @@ class ListBooks extends Component {
                                                         <div className="book-shelf-changer">
                                                             <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book, event)}>
                                                                 <option value="move" disabled>Move to...</option>
-                                                                {this.props.shelves.map((shelf) => (
+                                                                {this.props.shelves.filter(shelf => shelf.isVisible === true).map((shelf) => (
                                                                     <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
                                                                 ))}
                                                             </select>
