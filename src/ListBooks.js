@@ -12,12 +12,12 @@ class ListBooks extends Component {
                 <div className="list-books-content">
                     <div>
                         {this.props.shelves.map((shelf) => (
-                            <div className="bookshelf">
+                            <div className="bookshelf" key={shelf.id}>
                                 <h2 className="bookshelf-title">{shelf.label}</h2>
                                 <div className="bookshelf-books">
                                     <ol className="books-grid">
-                                        {this.props.books.filter(book => book.shelf == shelf.id).map((book) => (
-                                            <li>
+                                        {this.props.books.filter(book => book.shelf === shelf.id).map((book) => (
+                                            <li key={book.id}>
                                                 <div className="book">
                                                     <div className="book-top">
                                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
@@ -25,14 +25,14 @@ class ListBooks extends Component {
                                                             <select>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 {this.props.shelves.map((shelf) => (
-                                                                    <option value={shelf.id}>{shelf.label}</option>
+                                                                    <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
                                                                 ))}
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div className="book-title">{book.title}</div>
                                                     {book.authors.map((author) => (
-                                                        <div className="book-authors">{author}</div>
+                                                        <div className="book-authors" key={book.id + author}>{author}</div>
                                                     ))}
                                                 </div>
                                             </li>
