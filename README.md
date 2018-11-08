@@ -1,3 +1,21 @@
+# About
+
+This is a web application that tracks books by status(currently reading, want to read, read).
+
+# Quick Start (assumes Linux or Unix OS)
+
+1. Clone the project to your machine
+2. Navigate to the directory
+3. Run `npm install`
+4. Run `npm start`
+5. In your web browser, open [local host port 3000](http://localhost:3000/)
+
+# -------------------------------------------
+# -------------------------------------------
+# Udacity's original documentation below
+# -------------------------------------------
+# -------------------------------------------
+
 # MyReads Project
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.

@@ -11,8 +11,9 @@ class BooksApp extends Component {
     shelves: [ // TODO find way to handle dynamically
       { id: 'currentlyReading', label: 'Currently Reading' },
       { id: 'wantToRead', label: 'Want to Read' },
-      { id: 'read', label: 'Read' },
-      { id: 'none', label: 'None' },
+      { id: 'read', label: 'Read' }
+      // ,
+      // { id: 'none', label: 'None' },
     ]
   }
   componentDidMount() {
