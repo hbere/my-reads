@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
 class ListBooks extends Component {
+
+    handleShelfMove = (book, event) => {
+        let newShelf = event.target.value;
+        BooksAPI.update(book, newShelf)
+            .then((response) => {
+                console.log(response);
+                this.render();
+            })
+    }
 
     render() {
         return (
@@ -22,17 +32,17 @@ class ListBooks extends Component {
                                                     <div className="book-top">
                                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                                                         <div className="book-shelf-changer">
-                                                            <select>
+                                                            <select onChange={(event) => this.handleShelfMove(book, event)}>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 {this.props.shelves.map((shelf) => (
-                                                                    <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
+                                                                    <option value={shelf.id} selected={shelf.id == book.shelf} key={shelf.id}>{shelf.label}</option>
                                                                 ))}
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div className="book-title">{book.title}</div>
                                                     {book.authors.map((author) => (
-                                                        <div className="book-authors" key={book.id + author}>{author}</div>
+                                                        <div className="book-authors" key={book.id + ',' + author}>{author}</div>
                                                     ))}
                                                 </div>
                                             </li>
