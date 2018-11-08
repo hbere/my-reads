@@ -13,10 +13,10 @@ class ListBooks extends Component {
                     <div>
                         {this.props.shelves.map((shelf) => (
                             <div className="bookshelf">
-                                <h2 className="bookshelf-title">{shelf}</h2>
+                                <h2 className="bookshelf-title">{shelf.label}</h2>
                                 <div className="bookshelf-books">
                                     <ol className="books-grid">
-                                        {this.props.books.map((book) => ( // TODO add filter() for shelf
+                                        {this.props.books.filter(book => book.shelf == shelf.id).map((book) => (
                                             <li>
                                                 <div className="book">
                                                     <div className="book-top">

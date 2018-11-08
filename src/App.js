@@ -8,8 +8,12 @@ import './App.css'
 class BooksApp extends Component {
   state = {
     books: [],
-    // shelves: ['currentlyReading', 'wantToRead', 'read', 'none'] // TODO find way to handle dynamically
-    shelves: ['Currently Reading', 'Want to Read', 'Read', 'None'] // TODO find way to handle dynamically
+    shelves: [ // TODO find way to handle dynamically
+      { id: 'currentlyReading', label: 'Currently Reading' },
+      { id: 'wantToRead', label: 'Want to Read' },
+      { id: 'read', label: 'Read' },
+      { id: 'none', label: 'None' },
+    ]
   }
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
