@@ -1,6 +1,6 @@
 # About
 
-This is a web application that tracks books by status(currently reading, want to read, read).
+This is a web application where you can track seven (7) books by status: currently reading, want to read, and read. It also includes search functionality.
 
 # Quick Start (assumes Linux or Unix OS)
 
