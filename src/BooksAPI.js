@@ -42,3 +42,17 @@ export const search = (query) =>
     body: JSON.stringify({ query })
   }).then(res => res.json())
     .then(data => data.books)
+
+// // Sample API call
+// fetch('https://reactnd-books-api.udacity.com/books',
+//   {
+//     headers:
+//     {
+//       'Authorization': 'asdghk@9u3hf3ykdmvD'
+//     }
+//   })
+//   .then(function (response) {
+//     return response.json();
+//   }).then(function (myJSON) {
+//     console.log(myJSON);
+//   })
