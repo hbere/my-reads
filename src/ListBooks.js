@@ -1,19 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
 
 class ListBooks extends Component {
-    handleShelfMove = (book, event) => {
-        let newShelf = event.target.value;
-        // Update database
-        BooksAPI.update(book, newShelf)
-            .then((response) => {
-                console.log(response);
-            }).then(() => {
-                this.render(); // Re-render page
-            })
-    }
-
     render() {
         return (
             <div className="list-books">
@@ -33,7 +21,7 @@ class ListBooks extends Component {
                                                     <div className="book-top">
                                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                                                         <div className="book-shelf-changer">
-                                                            <select value={book.shelf} onChange={(event) => this.handleShelfMove(book, event)}>
+                                                            <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book, event)}>
                                                                 <option value="move" disabled>Move to...</option>
                                                                 {this.props.shelves.map((shelf) => (
                                                                     <option value={shelf.id} key={shelf.id}>{shelf.label}</option>

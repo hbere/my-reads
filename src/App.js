@@ -19,18 +19,41 @@ class BooksApp extends Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
-      console.log(this.state.books)
+      // console.log(this.state.books)
     })
+  }
+
+  updateShelves = (book, event) => {
+    let newShelf = event.target.value;
+    // Update database
+    BooksAPI.update(book, newShelf)
+      .then(() => {
+        // Return updated book list from API
+        // TODO for efficiency make this update locally because do not have to pull all data again here
+        return BooksAPI.getAll();
+      }).then((books) => {
+        // Re-render page
+        this.setState({ books })
+        this.render();
+      })
   }
 
   render() {
     return (
       <div className="app">
         <Route exact path='/search' render={() => (
-          <SearchBooks books={this.state.books} />
+          <SearchBooks
+            books={this.state.books}
+          />
         )} />
         <Route exact path='/' render={() => (
-          <ListBooks books={this.state.books} shelves={this.state.shelves} />
+          <ListBooks
+            books={this.state.books}
+            shelves={this.state.shelves}
+            onShelfMove={(book, event) => {
+              this.updateShelves(book, event)
+            }}
+          />
         )} />
       </div>
     )
