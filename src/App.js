@@ -7,11 +7,14 @@ import './App.css'
 
 class BooksApp extends Component {
   state = {
-    books: []
+    books: [],
+    // shelves: ['currentlyReading', 'wantToRead', 'read', 'none'] // TODO find way to handle dynamically
+    shelves: ['Currently Reading', 'Want to Read', 'Read', 'None'] // TODO find way to handle dynamically
   }
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
+      console.log(this.state.books)
     })
   }
 
@@ -22,7 +25,7 @@ class BooksApp extends Component {
           <SearchBooks books={this.state.books} />
         )} />
         <Route exact path='/' render={() => (
-          <ListBooks books={this.state.books} />
+          <ListBooks books={this.state.books} shelves={this.state.shelves} />
         )} />
       </div>
     )
