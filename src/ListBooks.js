@@ -5,14 +5,6 @@ import * as BooksAPI from './BooksAPI'
 class ListBooks extends Component {
 
     render() {
-
-        BooksAPI.getAll()
-            .then(function (response) {
-                return response;
-            }).then(function (myBooks) {
-                console.log(myBooks);
-            });
-
         return (
             <div className="list-books">
                 <div className="list-books-title">

@@ -7,9 +7,13 @@ import './App.css'
 
 class BooksApp extends Component {
   state = {
-    /**
-     * TODO consider whether need to track state (mutable info) here at all
-     */
+    books: []
+  }
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+      console.log(books);
+    })
   }
 
   render() {

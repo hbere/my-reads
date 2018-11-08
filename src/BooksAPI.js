@@ -43,7 +43,7 @@ export const search = (query) =>
   }).then(res => res.json())
     .then(data => data.books)
 
-// // Sample API call
+// // Sample API call #1
 // fetch('https://reactnd-books-api.udacity.com/books',
 //   {
 //     headers:
@@ -56,3 +56,11 @@ export const search = (query) =>
 //   }).then(function (myJSON) {
 //     console.log(myJSON);
 //   })
+
+// // Sample API call #2
+// BooksAPI.getAll()
+// .then(function (response) {
+//     return response;
+// }).then(function (myBooks) {
+//     console.log(myBooks);
+// });
