@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
@@ -41,7 +41,7 @@ class BooksApp extends React.Component {
           </div>
         )} />
         {/* Formerly this.state.showSearchPage === false */}
-        <Route path='/' render={() => (
+        <Route exact path='/' render={() => (
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
