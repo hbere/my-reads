@@ -14,13 +14,24 @@ class BooksApp extends Component {
       { id: 'read', label: 'Read' }
       // ,
       // { id: 'none', label: 'None' },
-    ]
+    ],
+    lastSearch: ''
   }
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
       // console.log(this.state.books)
     })
+  }
+
+  searchBooks = (query) => {
+    // console.log(query);
+    BooksAPI.search(query)
+      .then(function (result) {
+        return result;
+      }).then(function (resultText) {
+        console.log(resultText);
+      })
   }
 
   updateShelves = (book, event) => {
@@ -44,6 +55,9 @@ class BooksApp extends Component {
         <Route exact path='/search' render={() => (
           <SearchBooks
             books={this.state.books}
+            onType={(query) => {
+              this.searchBooks(query)
+            }}
           />
         )} />
         <Route exact path='/' render={() => (
