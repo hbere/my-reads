@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
 
 class ListBooks extends Component {
 
     render() {
+        console.log(this.props.books);
         return (
             <div className="list-books">
                 <div className="list-books-title">
