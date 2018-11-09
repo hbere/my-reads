@@ -12,7 +12,7 @@ class BooksApp extends Component {
       { id: 'currentlyReading', label: 'Currently Reading', visibleShelf: true },
       { id: 'wantToRead', label: 'Want to Read', visibleShelf: true },
       { id: 'read', label: 'Read', visibleShelf: true },
-      { id: '', label: 'None', visibleShelf: false }
+      { id: 'none', label: 'None', visibleShelf: false }
     ],
     searchResults: []
   }
@@ -29,7 +29,7 @@ class BooksApp extends Component {
     if (typeof query !== 'undefined' && query.length > 0) {
       BooksAPI.search(query).then((searchResults) => {
         if (typeof searchResults !== 'undefined' && searchResults.error !== 'empty query') {
-          // console.log(searchResults);
+          console.log(searchResults);
           this.setState({ searchResults: searchResults });
         } else {
           // console.log(searchResults);
@@ -42,10 +42,13 @@ class BooksApp extends Component {
     }
   }
 
-  updateShelves = (book, event) => {
+  updateShelves = (bookId, event) => {
     let newShelf = event.target.value;
     // Update database
-    BooksAPI.update(book, newShelf)
+    BooksAPI.get(bookId).
+      then((book) =>
+        BooksAPI.update(book, newShelf)
+      )
       .then(() => {
         // Return updated book list from API
         // TODO for efficiency make this update locally because do not have to pull all data again here
@@ -61,9 +64,13 @@ class BooksApp extends Component {
         <Route exact path='/search' render={() => (
           <SearchBooks
             books={this.state.books}
+            shelves={this.state.shelves}
             searchResults={this.state.searchResults}
             onSearch={(query) => {
               this.searchBooks(query)
+            }}
+            onShelfMove={(bookId, event) => {
+              this.updateShelves(bookId, event)
             }}
           />
         )} />
@@ -71,8 +78,8 @@ class BooksApp extends Component {
           <ListBooks
             books={this.state.books}
             shelves={this.state.shelves}
-            onShelfMove={(book, event) => {
-              this.updateShelves(book, event)
+            onShelfMove={(bookId, event) => {
+              this.updateShelves(bookId, event)
             }}
           />
         )} />

@@ -34,14 +34,14 @@ class SearchBooks extends Component {
                                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div> :
                                             <div className="book-cover" style={{ width: 128, height: 193 }}>[book cover unavailable]</div>
                                         }
-                                        {/* <div className="book-shelf-changer">
-                                            <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book, event)}>
+                                        <div className="book-shelf-changer">
+                                            <select value="none" onChange={(event) => this.props.onShelfMove(book.id, event)}>
                                                 <option value="move" disabled>Move to...</option>
                                                 {this.props.shelves.map((shelf) => (
                                                     <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
                                                 ))}
                                             </select>
-                                        </div> */}
+                                        </div>
                                     </div>
                                     {(typeof book.title !== 'undefined' && book.title.length > 0) ?
                                         <div className="book-title">{book.title}</div> :
