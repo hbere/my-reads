@@ -36,7 +36,7 @@ class SearchBooks extends Component {
                                         }
                                         <div className="book-shelf-changer">
                                             {/* TODO fix the value of SELECT to match data source on search results, if available */}
-                                            <select value="none" onChange={(event) => this.props.onShelfMove(book.id, event)}>
+                                            <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book.id, event)}>
                                                 <option value="move" disabled>Move to...</option>
                                                 {this.props.shelves.map((shelf) => (
                                                     <option value={shelf.id} key={shelf.id}>{shelf.label}</option>
