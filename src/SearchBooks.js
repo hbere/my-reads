@@ -34,12 +34,12 @@ class SearchBooks extends Component {
                             <li id={book.id} key={book.id}>
                                 <div className="book">
                                     <div className="book-top">
-                                        {(typeof book.imageLinks !== 'undefined' && typeof book.imageLinks.thumbnail !== 'undefined' && book.imageLinks.thumbnail.length > 0) ?
-                                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div> :
-                                            <div className="book-cover" style={{ width: 128, height: 193 }}>[book cover unavailable]</div>
+                                        {(typeof book.imageLinks !== 'undefined' && typeof book.imageLinks.thumbnail !== 'undefined' && book.imageLinks.thumbnail.length > 0)
+                                            ? <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                            : <div className="book-cover" style={{ width: 128, height: 193 }}>[book cover unavailable]</div>
                                         }
                                         <div className="book-shelf-changer">
-                                            {/* TODO fix the value of SELECT to match data source on search results, if available */}
+                                            {/* TODO improve speed by which new select value appears */}
                                             <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book.id, event)}>
                                                 <option value="move" disabled>Move to...</option>
                                                 {this.props.shelves.map((shelf) => (
@@ -48,12 +48,12 @@ class SearchBooks extends Component {
                                             </select>
                                         </div>
                                     </div>
-                                    {(typeof book.title !== 'undefined' && book.title.length > 0) ?
-                                        <div className="book-title">{book.title}</div> :
-                                        <div className="book-title">[book title unknown]</div>
+                                    {(typeof book.title !== 'undefined' && book.title.length > 0)
+                                        ? <div className="book-title">{book.title}</div>
+                                        : <div className="book-title">[book title unknown]</div>
                                     }
-                                    {(typeof book.authors !== 'undefined' && book.authors.length > 0) ?
-                                        book.authors.map((author) => (
+                                    {(typeof book.authors !== 'undefined' && book.authors.length > 0)
+                                        ? book.authors.map((author) => (
                                             <div className="book-authors" key={book.id + ',' + author}>{author}</div>
                                         ))
                                         : < div className="book-authors">[author unknown]</div>
