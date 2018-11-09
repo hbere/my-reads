@@ -19,7 +19,10 @@ class ListBooks extends Component {
                                             <li id={book.id} key={book.id}>
                                                 <div className="book">
                                                     <div className="book-top">
-                                                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                                        {(typeof book.imageLinks !== 'undefined' && typeof book.imageLinks.thumbnail !== 'undefined' && book.imageLinks.thumbnail.length > 0)
+                                                            ? <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                                            : <div className="book-cover" style={{ width: 128, height: 193 }}>[book cover unavailable]</div>
+                                                        }
                                                         <div className="book-shelf-changer">
                                                             <select value={book.shelf} onChange={(event) => this.props.onShelfMove(book.id, event)}>
                                                                 <option value="move" disabled>Move to...</option>
@@ -29,10 +32,16 @@ class ListBooks extends Component {
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div className="book-title">{book.title}</div>
-                                                    {book.authors.map((author) => (
-                                                        <div className="book-authors" key={book.id + ',' + author}>{author}</div>
-                                                    ))}
+                                                    {(typeof book.title !== 'undefined' && book.title.length > 0)
+                                                        ? <div className="book-title">{book.title}</div>
+                                                        : <div className="book-title">[book title unknown]</div>
+                                                    }
+                                                    {(typeof book.authors !== 'undefined' && book.authors.length > 0)
+                                                        ? book.authors.map((author) => (
+                                                            <div className="book-authors" key={book.id + ',' + author}>{author}</div>
+                                                        ))
+                                                        : < div className="book-authors">[author unknown]</div>
+                                                    }
                                                 </div>
                                             </li>
                                         ))}
