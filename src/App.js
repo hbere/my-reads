@@ -45,8 +45,7 @@ class BooksApp extends Component {
   updateShelves = (bookId, event) => {
     let newShelf = event.target.value;
     // Update database
-    BooksAPI.get(bookId).
-      then((book) =>
+    BooksAPI.get(bookId).then((book) =>
         BooksAPI.update(book, newShelf)
       )
       .then(() => {

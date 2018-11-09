@@ -35,6 +35,7 @@ class SearchBooks extends Component {
                                             <div className="book-cover" style={{ width: 128, height: 193 }}>[book cover unavailable]</div>
                                         }
                                         <div className="book-shelf-changer">
+                                            {/* TODO fix the value of SELECT to match data source on search results, if available */}
                                             <select value="none" onChange={(event) => this.props.onShelfMove(book.id, event)}>
                                                 <option value="move" disabled>Move to...</option>
                                                 {this.props.shelves.map((shelf) => (
