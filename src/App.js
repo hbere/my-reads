@@ -28,17 +28,9 @@ class BooksApp extends Component {
     // Search via API
     if (typeof query !== 'undefined' && query.length > 0) {
       BooksAPI.search(query).then((searchResults) => {
-        if (typeof searchResults !== 'undefined' && searchResults.error !== 'empty query') { // if search results defined and nonempty
-          searchResults.forEach((result, index) => {
-            // if book id is in books use books value, otherwise use 'none'
-            // console.log(this.state.books.filter(book => book.id === result.id)[0].shelf);
-            searchResults[index].shelf =
-              (this.state.books.filter(book => book.id === result.id).length === 1
-                ? this.state.books.filter(book => book.id === result.id)[0].shelf
-                : 'none'
-              );
-          }); // ...add shelf attribute...
-          this.setState({ searchResults: searchResults }); // ...and set state.
+        if (typeof searchResults !== 'undefined' && searchResults.error !== 'empty query') {
+          console.log(searchResults);
+          this.setState({ searchResults: searchResults });
         } else {
           // console.log(searchResults);
           this.setState({ searchResults: [] });
@@ -54,8 +46,8 @@ class BooksApp extends Component {
     let newShelf = event.target.value;
     // Update database
     BooksAPI.get(bookId).then((book) =>
-      BooksAPI.update(book, newShelf)
-    )
+        BooksAPI.update(book, newShelf)
+      )
       .then(() => {
         // Return updated book list from API
         // TODO for efficiency make this update locally because do not have to pull all data again here
