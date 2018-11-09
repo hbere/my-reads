@@ -10,7 +10,7 @@ class ListBooks extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        {this.props.shelves.filter(shelf => shelf.isVisible === true).map((shelf) => (
+                        {this.props.shelves.filter(shelf => shelf.visibleShelf === true).map((shelf) => (
                             <div className="bookshelf" key={shelf.id}>
                                 <h2 className="bookshelf-title">{shelf.label}</h2>
                                 <div className="bookshelf-books">

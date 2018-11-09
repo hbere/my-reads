@@ -9,10 +9,10 @@ class BooksApp extends Component {
   state = {
     books: [],
     shelves: [ // TODO find way to handle dynamically
-      { id: 'currentlyReading', label: 'Currently Reading', isVisible: true },
-      { id: 'wantToRead', label: 'Want to Read', isVisible: true },
-      { id: 'read', label: 'Read', isVisible: true },
-      { id: '', label: 'None', isVisible: false }
+      { id: 'currentlyReading', label: 'Currently Reading', visibleShelf: true },
+      { id: 'wantToRead', label: 'Want to Read', visibleShelf: true },
+      { id: 'read', label: 'Read', visibleShelf: true },
+      { id: '', label: 'None', visibleShelf: false }
     ],
     searchResults: []
   }

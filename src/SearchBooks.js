@@ -41,7 +41,7 @@ class SearchBooks extends Component {
                                         </div> */}
                                     </div>
                                     <div className="book-title">{book.title}</div>
-                                    {book.authors ?
+                                    {(typeof book.authors !== 'undefined' && book.authors.length > 0) ?
                                         book.authors.map((author) => (
                                             <div className="book-authors" key={book.id + ',' + author}>{author}</div>
                                         ))
