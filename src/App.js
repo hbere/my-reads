@@ -52,6 +52,8 @@ class BooksApp extends Component {
 
   updateShelves = (bookId, event) => {
     let newShelf = event.target.value;
+    let newShelfLabel = this.state.shelves.filter(shelf => (shelf.id === newShelf))[0].label;
+    let searchPageUpdates = new Array(...this.state.searchResults);
     // Update database
     BooksAPI.get(bookId).then((book) =>
       BooksAPI.update(book, newShelf)
@@ -61,8 +63,17 @@ class BooksApp extends Component {
         // TODO for efficiency make this update locally because do not have to pull all data again here
         return BooksAPI.getAll();
       }).then((books) => {
+        searchPageUpdates.forEach((searchResult, index) => {
+          if (searchResult.id === bookId) {
+            searchResult.shelf = newShelf;
+            this.setState({ searchResults: searchPageUpdates })
+            alert(`You have added "${searchResult.title}" to "${newShelfLabel}."`)
+          }
+        })
+        return books;
+      }).then((books) => {
         this.setState({ books: books })
-      })
+      });
   }
 
   render() {
