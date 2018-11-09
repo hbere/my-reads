@@ -28,10 +28,16 @@ class BooksApp extends Component {
     // Search via API
     if (typeof query !== 'undefined' && query.length > 0) {
       BooksAPI.search(query).then((searchResults) => {
-        console.log(searchResults);
-        this.setState({ searchResults: searchResults });
+        if (typeof searchResults !== 'undefined' && searchResults.error !== 'empty query') {
+          // console.log(searchResults);
+          this.setState({ searchResults: searchResults });
+        } else {
+          // console.log(searchResults);
+          this.setState({ searchResults: [] });
+        }
       })
     } else {
+      // console.log("no results shown");
       this.setState({ searchResults: [] });
     }
   }
