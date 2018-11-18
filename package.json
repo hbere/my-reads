@@ -1,4 +1,5 @@
 {
+  "homepage": "https://hbere.github.io/my-reads/",
   "dependencies": {
     "compression": "^1.7.3",
     "helmet": "^3.15.0",
