@@ -1,5 +1,5 @@
 {
-  "homepage": "https://hbere.github.io/my-reads/",
+  "homepage": "https://my-reads-test.herokuapp.com",
   "dependencies": {
     "compression": "^1.7.3",
     "helmet": "^3.15.0",
