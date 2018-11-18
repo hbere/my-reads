@@ -2,7 +2,11 @@
 
 This is a web application where you can track seven (7) books by status: currently reading, want to read, and read. It also includes search functionality.
 
-# Quick Start (assumes Linux or Unix OS)
+## Quick Start Guide
+
+Try the app on [Heroku](https://my-reads-test.herokuapp.com/).
+
+## Quick Local Install Guide (assumes Linux or Unix)
 
 1. Clone the project to your machine
 2. Open the command line, if you have not already done so
